@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import { Row, Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Records from "./records.json";
 import Home from "./Home";
+import "../App.css";
 
 function Login() {
   const email = useRef();
@@ -16,43 +17,46 @@ function Login() {
     }
   }, [localState]);
 
-  const check = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const user = Records.filter((record) => {
       return (
         email.current.value === record.email &&
         password.current.value === record.password
       );
     });
-    console.log(email.current.value);
     localStorage.setItem("state", user);
     window.location.reload();
   };
 
   return (
     <div>
-      {console.log(show)}
       {show ? (
         <Home />
       ) : (
-        <Container className="d-flex vh-100">
+        <div className="d-flex color-bg vw-100 vh-100">
           <Row className="m-auto align-self-center">
-            <Card className="" style={{ width: "18rem" }}>
+            <Card className="p-4 crd" style={{ width: "18rem" }}>
               <Card.Title>Login</Card.Title>
-              <form onSubmit={check}>
+              <form onSubmit={handleSubmit}>
                 <div>
                   <label>Enter Email</label>
                   <br></br>
-                  <input className="" type="text" ref={email} />
+                  <input className="mb-3 p-1 inp" type="text" ref={email} />
                 </div>
                 <div>
                   Enter Password
-                  <input className="mb-3" type="password" ref={password} />
+                  <input
+                    className="mb-3 p-1 inp"
+                    type="password"
+                    ref={password}
+                  />
                 </div>
-                <button>Login</button>
+                <button className="btn">Login</button>
               </form>
             </Card>
           </Row>
-        </Container>
+        </div>
       )}
     </div>
   );

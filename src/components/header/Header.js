@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import "./header.css";
 
 const Header = () => {
   const handleClick = () => {
@@ -11,12 +12,17 @@ const Header = () => {
   };
   return (
     <div>
-      <Navbar bg="light" expand="lg" variant="light">
+      <Navbar className="nav color-white" expand="lg" variant="light">
         <Container>
           <Navbar.Brand>
             <Link
               to="/"
-              style={{ textDecoration: "none", color: "black" }}
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontFamily: "cursive",
+                fontSize: "italic",
+              }}
               variant="light"
             >
               Sajhau

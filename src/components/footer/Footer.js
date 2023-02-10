@@ -10,6 +10,8 @@ const Footer = () => {
         position: "relative",
         bottom: 0,
         justifyContent: "center",
+        backgroundColor: "rgb(233, 255, 219)",
+        color: "rgb(7, 4, 29)",
       }}
     >
       <Row>

@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
@@ -12,11 +11,19 @@ function Home() {
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Main />} exact />
-          <Route path="/carts" element={<Carts />} exact />
-          <Route path="/products" element={<Products />} exact />
-        </Routes>
+        <main
+          style={{
+            backdropFilter: "initial",
+            backgroundColor: "rgb(233, 255, 219)",
+            color: "rgb(7, 4, 29)",
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Main />} exact />
+            <Route path="/carts" element={<Carts />} exact />
+            <Route path="/products" element={<Products />} exact />
+          </Routes>
+        </main>
         <Footer />
       </BrowserRouter>
     </>
