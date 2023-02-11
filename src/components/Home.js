@@ -4,9 +4,14 @@ import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import Carts from "./Carts";
 import Products from "./Products";
+import OrderList from "./OrderList";
+import { Navigate } from "react-router-dom";
 import Main from "./Main";
 
 function Home() {
+  const users = localStorage.getItem("auth");
+  const auth = JSON.parse(users).map((user) => user.role);
+  console.log(auth);
   return (
     <>
       <BrowserRouter>
@@ -22,6 +27,11 @@ function Home() {
             <Route path="/" element={<Main />} exact />
             <Route path="/carts" element={<Carts />} exact />
             <Route path="/products" element={<Products />} exact />
+            <Route
+              path="/orderlist"
+              element={auth == "ADMIN" ? <OrderList /> : <Navigate to="/" />}
+              exact
+            />
           </Routes>
         </main>
         <Footer />

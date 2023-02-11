@@ -9,6 +9,7 @@ function Login() {
   const email = useRef();
   const password = useRef();
   const localState = localStorage.getItem("state");
+
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const user = Records.filter((record) => {
       return (
         email.current.value === record.email &&
@@ -26,6 +28,7 @@ function Login() {
       );
     });
     localStorage.setItem("state", user);
+    localStorage.setItem("auth", JSON.stringify(user));
     window.location.reload();
   };
 
@@ -52,7 +55,9 @@ function Login() {
                     ref={password}
                   />
                 </div>
-                <button className="btn">Login</button>
+                <button type="submit" className="btn">
+                  Login
+                </button>
               </form>
             </Card>
           </Row>
