@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import "../App.css";
 import FilterProducts from "./Filter";
+import { useSelector, useDispatch } from "react-redux";
+import { addProducts } from "./Reducer";
 
 const Products = () => {
+  const dispatch = useDispatch();
+  const userList = useSelector((state) => state.products.value);
+  console.log(userList);
+
   const [items, setItems] = useState("");
   console.log(items);
   const item = FilterProducts(items);
@@ -27,6 +33,21 @@ const Products = () => {
               </Button>
               <Button onClick={() => handleOnclick("gloves")}>Gloves</Button>
               <Button onClick={() => handleOnclick("bags")}>Bags</Button>
+              <Button
+                onClick={() => {
+                  dispatch(
+                    addProducts({
+                      id: userList[userList.length - 1].id + 1,
+                      image: "./img/image1.jpg",
+                      title: "Accessoriee-XY",
+                      price: "300",
+                      category: "bags",
+                    })
+                  );
+                }}
+              >
+                Add
+              </Button>
             </ul>
           </div>
           <div className="p-4 d-flex boxs">

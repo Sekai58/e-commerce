@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "image": "./img/image1.jpg",
+    "title": "Bag-XY",
+    "price": "300",
+    "category": "bags"
+  },
+  {
+    "id": 2,
+    "image": "./img/image1.jpg",
+    "title": "Glove-XY",
+    "price": "500",
+    "category": "gloves"
+  },
+  {
+    "id": 3,
+    "image": "./img/image1.jpg",
+    "title": "Watch-XY",
+    "price": "500",
+    "category": "watch"
+  },
+  {
+    "id": 4,
+    "image": "./img/image1.jpg",
+    "title": "Accessories-XY",
+    "price": "500",
+    "category": "accessories"
+  },
+  {
+    "id": 5,
+    "image": "./img/image1.jpg",
+    "title": "Googles-XY",
+    "price": "500",
+    "category": "spectales"
+  },
+  {
+    "id": 6,
+    "image": "./img/image1.jpg",
+    "title": "Googles-XY",
+    "price": "500",
+    "category": "spectales"
+  }
+]
