@@ -1,0 +1,58 @@
+.color-bg {
+    min-height: 100vh;
+    background-color: rgba(242, 184, 230, 0.75) !important;
+  }
+  
+  main {
+    min-height: 92vh;
+  }
+  
+  .btn {
+    background-color: #474747 !important;
+  }
+  
+  .btn:hover,
+  .btn:active,
+  .btn:active,
+  .btn:visited {
+    background-color: rgba(242, 184, 230, 0.75) !important;
+  }
+  
+  .crd {
+    border-radius: 5em;
+    border: solid 0.2px !important;
+    box-shadow: 2px !important;
+    background-color: rgba(39, 39, 39, 0.5) !important;
+  }
+  
+  .inp {
+    border-radius: 5px;
+    border-top: 0;
+    border-left: 0;
+  }
+  
+  .inp:focus {
+    border: 0;
+    text-decoration: none;
+  }
+  
+  .boxs {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .res {
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+  }
+  
+  .title {
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  

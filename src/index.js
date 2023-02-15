@@ -6,7 +6,7 @@ import "./bootstrap.min.css";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import Reducer from "./components/Reducer";
+import Reducer from "./components/Products/Reducer";
 
 const store = configureStore({
   reducer: {

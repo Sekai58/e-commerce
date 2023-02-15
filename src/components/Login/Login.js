@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Row } from "react-bootstrap";
 import Records from "./records.json";
-import Home from "./Home";
-import "../App.css";
+import Home from "../Home";
+import "./Login.css";
 
 function Login() {
   const email = useRef();

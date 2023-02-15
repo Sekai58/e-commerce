@@ -34,9 +34,7 @@ const Header = () => {
             <Nav style={{ maxHeight: "100px" }} navbarScroll>
               <Nav.Link href="/products">Products</Nav.Link>
               <Nav.Link href="/orderlist">OrderList</Nav.Link>
-              <Nav.Link href="/carts">
-                Carts<span className="total-cart">(10)</span>
-              </Nav.Link>
+
               <Nav.Link onClick={handleClick} href="/">
                 Logout
               </Nav.Link>

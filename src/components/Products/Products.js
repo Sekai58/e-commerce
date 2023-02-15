@@ -1,30 +1,63 @@
 import React, { useState } from "react";
 import { Card, ListGroup, Button } from "react-bootstrap";
-import "../App.css";
+import "./Products.css";
 import FilterProducts from "./Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { addProducts } from "./Reducer";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const Products = () => {
+  const users = localStorage.getItem("auth");
+  const auth = JSON.parse(users).map((user) => user.role);
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.products.value);
-  console.log(userList);
 
   const [items, setItems] = useState("");
-  console.log(items);
+
   const item = FilterProducts(items);
 
-  console.log(items);
   const handleOnclick = (categ) => {
     setItems(categ);
-    console.log(items);
   };
 
   return (
     <div>
-      {item ? (
+      {item && userList ? (
         <div className="p-3 ">
           <div className="p-3 ">
+            <div className=" d-flex title">
+              <InputGroup className="mb-3">
+                <InputGroup.Text>Category</InputGroup.Text>
+                <Form.Control aria-label="category" />
+              </InputGroup>
+              <InputGroup className="mb-3">
+                <InputGroup.Text>Product Name</InputGroup.Text>
+                <Form.Control aria-label="name" />
+              </InputGroup>
+              <>
+                <Form.Range />
+              </>
+              {auth == "ADMIN" ? (
+                <Button
+                  onClick={() => {
+                    dispatch(
+                      addProducts({
+                        id: userList[userList.length - 1].id + 1,
+                        image: "./img/image1.jpg",
+                        title: "Accessoriee-XY",
+                        price: "300",
+                        category: "bags",
+                      })
+                    );
+                  }}
+                >
+                  Add
+                </Button>
+              ) : (
+                <Button disabled>Add</Button>
+              )}
+            </div>
             <ul className="d-flex title">
               <Button onClick={() => handleOnclick("")}>All</Button>
               <Button onClick={() => handleOnclick("watch")}>Watch</Button>
@@ -33,21 +66,6 @@ const Products = () => {
               </Button>
               <Button onClick={() => handleOnclick("gloves")}>Gloves</Button>
               <Button onClick={() => handleOnclick("bags")}>Bags</Button>
-              <Button
-                onClick={() => {
-                  dispatch(
-                    addProducts({
-                      id: userList[userList.length - 1].id + 1,
-                      image: "./img/image1.jpg",
-                      title: "Accessoriee-XY",
-                      price: "300",
-                      category: "bags",
-                    })
-                  );
-                }}
-              >
-                Add
-              </Button>
             </ul>
           </div>
           <div className="p-4 d-flex boxs">
