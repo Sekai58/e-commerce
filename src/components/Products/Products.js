@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import "./Products.css";
 import FilterProducts from "./Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { addProducts } from "./Reducer";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 
 const Products = () => {
+  const category = useRef();
+  const name = useRef();
   const users = localStorage.getItem("auth");
   const auth = JSON.parse(users).map((user) => user.role);
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.products.value);
 
   const [items, setItems] = useState("");
+  const [file, setFile] = useState();
 
   const item = FilterProducts(items);
 
@@ -21,33 +22,46 @@ const Products = () => {
     setItems(categ);
   };
 
+  const handleChange = (e) => {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  };
+
   return (
     <div>
       {item && userList ? (
         <div className="p-3 ">
           <div className="p-3 ">
-            <div className=" d-flex title">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>Category</InputGroup.Text>
-                <Form.Control aria-label="category" />
-              </InputGroup>
-              <InputGroup className="mb-3">
-                <InputGroup.Text>Product Name</InputGroup.Text>
-                <Form.Control aria-label="name" />
-              </InputGroup>
-              <>
-                <Form.Range />
-              </>
+            <div className=" d-flex titles">
+              <input
+                className="mb-3 p-1 inp"
+                type="text"
+                placeholder="Category"
+                ref={category}
+              />
+              <input
+                className="mb-3 p-1 inp"
+                type="text"
+                placeholder="Product Name"
+                ref={name}
+              />
+              <input
+                className="mb-3 p-1 inp"
+                type="file"
+                placeholder="Product Name"
+                onChange={handleChange}
+              />
               {auth == "ADMIN" ? (
                 <Button
+                  className="mb-3"
                   onClick={() => {
                     dispatch(
                       addProducts({
                         id: userList[userList.length - 1].id + 1,
-                        image: "./img/image1.jpg",
-                        title: "Accessoriee-XY",
+                        image: file,
+                        title: name.current.value,
                         price: "300",
-                        category: "bags",
+                        category: category.current.values,
                       })
                     );
                   }}
@@ -55,10 +69,12 @@ const Products = () => {
                   Add
                 </Button>
               ) : (
-                <Button disabled>Add</Button>
+                <Button disabled className="mb-3">
+                  Add
+                </Button>
               )}
             </div>
-            <ul className="d-flex title">
+            <ul className="d-flex titles">
               <Button onClick={() => handleOnclick("")}>All</Button>
               <Button onClick={() => handleOnclick("watch")}>Watch</Button>
               <Button onClick={() => handleOnclick("accessories")}>
